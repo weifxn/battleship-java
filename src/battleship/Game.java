@@ -1,12 +1,17 @@
+/*
+Todo: 
+[] Display board
+[] Add ships 
+Changelog:
 
+*/
+import java.util.Arrays;
 
 public class Game {
 
 	public static void main(String[] args) {
-		// System.out.print("hello world");
 		Board b1 = new Board();
-
-		System.out.println(b1.getString());
+		System.out.println(b1.displayBoard());
 		
 		
 

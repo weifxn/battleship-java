@@ -1,14 +1,36 @@
+import java.util.Arrays;
 
 // Board consists of 20 rows x 60 column
-
 public class Board extends Game {
-	private String testString;
+	private int rows = 20;
+	private int columns = 60;
+	private String board[][] = new String[rows][columns];
+
+	// Board Constructor
 	public Board() {
-		testString = "Hello World";
+		populateBoard(); //reset board
+	}	
+
+
+	public void populateBoard() {
+		for (int i = 0; i < rows; i++){
+			for(int j = 0; j < columns; j++){
+				board[i][j] = "#";
+			}
+		}
 	}
 
-	public String getString() {
-		return testString;
+	
+
+	public String displayBoard() {
+		String boardDisplay = "";
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[i].length; j++) {
+				boardDisplay += board[i][j];
+			}
+			boardDisplay += "\n";
+		}
+		return boardDisplay;
 	}
 	
 }
