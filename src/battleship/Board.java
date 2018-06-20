@@ -4,7 +4,9 @@ import java.util.Arrays;
 public class Board extends Game {
 	private int rows = 20;
 	private int columns = 60;
+
 	private String board[][] = new String[rows][columns];
+	private String boardDisplay = "";
 
 	// Board Constructor
 	public Board() {
@@ -23,7 +25,6 @@ public class Board extends Game {
 	
 
 	public String displayBoard() {
-		String boardDisplay = "";
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				boardDisplay += board[i][j];

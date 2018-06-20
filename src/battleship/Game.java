@@ -1,6 +1,6 @@
 /*
 Todo: 
-[] Display board
+[x] Display board
 [] Add ships 
 Changelog:
 
@@ -12,8 +12,6 @@ public class Game {
 	public static void main(String[] args) {
 		Board b1 = new Board();
 		System.out.println(b1.displayBoard());
-		
-		
 
 	}
 
