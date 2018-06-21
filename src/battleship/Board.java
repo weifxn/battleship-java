@@ -10,7 +10,7 @@ public class Board extends Game {
 
 	// Board Constructor
 	public Board() {
-		populateBoard(); //reset board
+		populateBoard(); 
 	}	
 
 
