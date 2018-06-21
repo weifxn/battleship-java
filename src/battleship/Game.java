@@ -15,7 +15,7 @@ public class Game {
 			Board b1 = new Board();
 			System.out.println(b1.displayBoard());
 			choice = getUserChoice();
-			clearConsole();
+			clearScreen();
 		}
 
 
@@ -27,19 +27,9 @@ public class Game {
         return input.nextInt();
 	} 
 	
-	public final static void clearConsole() {
-    try {
-        final String os = System.getProperty("os.name");
-        if (os.contains("Windows")) {
-            Runtime.getRuntime().exec("cls");
-        }
-        else {
-            Runtime.getRuntime().exec("clear");
-        }
+	public static void clearScreen() {  
+		System.out.print("\033[H\033[2J");  
+		System.out.flush();  
+	   
     }
-    catch (final Exception e)  {
-        
-    }
-}
-
 }
