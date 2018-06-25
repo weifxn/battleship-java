@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 // Board consists of 20 rows x 60 columns
-public class Board extends Game {
+public class Grid extends Game {
 	private int rows = 20;
 	private int columns = 60;
 
@@ -9,7 +9,7 @@ public class Board extends Game {
 	private String boardDisplay = "";
 
 	// Board Constructor
-	public Board() {
+	public Grid() {
 		populateBoard(); 
 	}	
 

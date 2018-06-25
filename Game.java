@@ -1,8 +1,10 @@
 /*
 Todo: 
-[x] Display board
-[] Add ships 
+- Display board
+- Add ships 
+- 
 Changelog:
+-
 
 */
 import java.util.Scanner;
@@ -13,7 +15,7 @@ public class Game {
 	public static void main(String[] args) {
 		int choice = 1;
 		while (choice > 0) {
-			Board b1 = new Board();
+			Grid b1 = new Grid();
 			System.out.println(b1.displayBoard());
 			choice = getUserChoice();
 			clearScreen();
