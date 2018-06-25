@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-// Board consists of 20 rows x 60 column
+// Board consists of 20 rows x 60 columns
 public class Board extends Game {
 	private int rows = 20;
 	private int columns = 60;

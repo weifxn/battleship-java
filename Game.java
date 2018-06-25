@@ -33,7 +33,7 @@ public class Game {
 				choice = input.nextInt();
 			}
 			catch (InputMismatchException e) {
-				System.out.println("Please enter integer");
+				System.out.println("Please enter integer!");
 				
 			}
 		}
