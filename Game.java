@@ -29,9 +29,9 @@ public class Game {
 		while (choice < 0) {
 			try {
 				Scanner input = new Scanner( System.in );
-				System.out.println( "Enter row number: " );
+				System.out.println( "Enter row: " );
 				choice = input.nextInt();
-				System.out.println( "Enter column number: " );
+				System.out.println( "Enter column: " );
 				choice = input.nextInt();
 			}
 			catch (InputMismatchException e) {
