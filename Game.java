@@ -9,6 +9,9 @@ Changelog:
 - Added '0' to exit/go menu
 - changed choice to array
 
+Fix: 
+- infinite loop when string at menu
+
 */
 import java.util.Scanner;
 import java.util.InputMismatchException;
@@ -16,6 +19,27 @@ import java.util.InputMismatchException;
 
 public class Game {
 	public static void main(String[] args) {
+
+		
+		gameMenu();
+
+	}
+	private static void gameMenu() {
+		Scanner input = new Scanner( System.in );
+		for (int quit = 0; quit < 1; quit--) {
+			try {
+				System.out.println("Battleship \n\n 1. Start \n 2. Quit");
+				int choice = input.nextInt();
+				if (choice == 1) {
+					startGame();
+				}
+			}
+			catch (InputMismatchException e) {
+			}
+		}
+	}
+
+	private static void startGame() {
 		for (int exit = 0; exit < 1; exit--) {
 			Grid b1 = new Grid();
 			System.out.println(b1.displayBoard());
@@ -23,14 +47,12 @@ public class Game {
 			exit = checkExit(choice);
 			// clearScreen();
 		}
-
-
 	}
 	// get user choice
     private static int[] getUserChoice() {
 		String[] rowCol = { "row", "column" };
 		Scanner input = new Scanner( System.in );
-		int[] choice = {0,0};
+		int[] choice = {-1,-1};
 		for (int i = 0; i < 2; i++) {
 			try {
 				System.out.printf( "Enter %s: ", rowCol[i] );
@@ -40,7 +62,8 @@ public class Game {
 				}
 			}
 			catch (InputMismatchException e) {
-				System.out.println("Please enter integer");
+				i = 2;
+				// System.out.println("Please enter integer");
 				
 			}
 		}	
@@ -50,7 +73,6 @@ public class Game {
 	private static int checkExit(int[] choice) {
 		for (int i = 0; i < 2; i++) {
 			if (choice[i] == 0) {
-				System.out.println("exit");
 				return 2;
 			}
 		}
@@ -59,9 +81,8 @@ public class Game {
 	}
 
 	
-	public static void clearScreen() {  
-		System.out.print("\033[H\033[2J");  
-		System.out.flush();  
-	   
-    }
+	// public static void clearScreen() {  
+	// 	System.out.print("\033[H\033[2J");  
+	// 	System.out.flush();  
+    // }
 }
