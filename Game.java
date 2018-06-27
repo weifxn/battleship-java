@@ -18,6 +18,9 @@ import java.util.InputMismatchException;
 
 
 public class Game {
+	// variables
+
+	// classes
 	private Screen screen; 
 	private Input input;
 
@@ -33,28 +36,32 @@ public class Game {
 
 	public void run() 
 	{
-		while (true) {
-			gameMenu();
+		for (int quit = 0; quit < 1; quit--) {
+			quit = gameMenu();
 		}
 		
 
 	}
-	private void gameMenu() {
-		Scanner input = new Scanner( System.in );
-		for (int quit = 0; quit < 1; quit--) {
-				
+	private int gameMenu() {	
+		while (true) {
 			int choice = displayMenu();
-			if (choice == 1) {
-				startGame();
+			switch ( choice )
+			{
+				case START:
+					startGame();
+					return 0;
+				case QUIT:
+					return 2;
 			}
+			return 0;
 		}
 	}
 
 	private int displayMenu() {
-		screen.displayMessageLine( "\n Battleship" );
-		screen.displayMessageLine( " 1. Start" );
-		screen.displayMessageLine( " 2. Quit" );
-		screen.displayMessageLine( "\n Enter a choice: " );
+		screen.displayMessageLine( "\nBattleship" );
+		screen.displayMessageLine( "1. Start" );
+		screen.displayMessageLine( "2. Quit" );
+		screen.displayMessageLine( "\nEnter a choice: " );
 		return input.getInput();
 
 
@@ -62,22 +69,21 @@ public class Game {
 
 	private void startGame() {
 		for (int exit = 0; exit < 1; exit--) {
-			Grid b1 = new Grid();
-			screen.displayMessage(b1.displayBoard());
+			Grid grid = new Grid();
+			screen.displayMessage(grid.displayBoard());
 			int[] choice = getUserChoice();
 			exit = checkExit(choice);
 			// clearScreen();
 		}
 	}
 	// get user choice
-    private static int[] getUserChoice() {
+    private int[] getUserChoice() {
 		String[] rowCol = { "row", "column" };
-		Scanner input = new Scanner( System.in );
 		int[] choice = {-1,-1};
 		for (int i = 0; i < 2; i++) {
 			try {
 				System.out.printf( "Enter %s: ", rowCol[i] );
-				choice[i] = input.nextInt();
+				choice[i] = input.getInput();
 				if (choice[i] == 0) {
 					i = 2; // 0 to exit
 				}
