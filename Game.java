@@ -18,18 +18,33 @@ import java.util.InputMismatchException;
 
 
 public class Game {
-	public static void main(String[] args) {
+	private Screen screen; 
+	private Input input;
 
-		
-		gameMenu();
+	// constants or menu options
+	private static final int START = 1;
+	private static final int QUIT = 2;
+	
+	public Game() {
+		screen = new Screen();
+		input = new Input();
 
 	}
-	private static void gameMenu() {
+
+	public void run() 
+	{
+		while (true) {
+			gameMenu();
+		}
+		
+
+	}
+	private void gameMenu() {
 		Scanner input = new Scanner( System.in );
 		for (int quit = 0; quit < 1; quit--) {
 			try {
-				System.out.println("Battleship \n\n 1. Start \n 2. Quit");
-				int choice = input.nextInt();
+				
+				int choice = displayMenu();
 				if (choice == 1) {
 					startGame();
 				}
@@ -37,6 +52,16 @@ public class Game {
 			catch (InputMismatchException e) {
 			}
 		}
+	}
+
+	private int displayMenu() {
+		screen.displayMessageLine( "\n Battleship" );
+		screen.displayMessageLine( " 1. Start" );
+		screen.displayMessageLine( " 2. Quit" );
+		screen.displayMessageLine( "\n Enter a choice: " );
+		return input.getInput();
+
+
 	}
 
 	private static void startGame() {
