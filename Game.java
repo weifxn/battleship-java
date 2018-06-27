@@ -22,6 +22,7 @@ public class Game {
 	// classes
 	private Screen screen; 
 	private Input input;
+	private Grid grid;
 
 	// constants or menu options
 	private static final int START = 1;
@@ -30,6 +31,7 @@ public class Game {
 	public Game() {
 		screen = new Screen();
 		input = new Input();
+		grid = new Grid();
 
 	}
 
@@ -68,8 +70,7 @@ public class Game {
 
 	private void startGame() {
 		for (int exit = 0; exit < 1; exit--) {
-			Grid grid = new Grid();
-			screen.displayMessage(grid.displayBoard());
+			grid.displayBoard();
 			int[] choice = getUserChoice();
 			exit = checkExit(choice); // if return 2 will exit loop
 			// clearScreen();
