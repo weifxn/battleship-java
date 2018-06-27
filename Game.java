@@ -70,7 +70,7 @@ public class Game {
 
 	private void startGame() {
 		for (int exit = 0; exit < 1; exit--) {
-			grid.displayBoard();
+			grid.displayGrid();
 			int[] choice = getUserChoice();
 			exit = checkExit(choice); // if return 2 will exit loop
 			// clearScreen();

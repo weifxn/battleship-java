@@ -1,40 +1,40 @@
 import java.util.Arrays;
 
 // Board consists of 20 rows x 60 columns
-public class Grid{
-	private int rows = 20;
-	private int columns = 60;
+public class Grid {
+	private static final int rows = 20;
+	private static final int columns = 60;
 
-	private String board[][] = new String[rows][columns];
-	private String boardDisplay = "";
+	private String grid[][] = new String[rows][columns];
+	private String gridDisplay = "";
 
 	private Screen screen = new Screen();
 
 	// Board Constructor
 	public Grid() {
 
-		populateBoard(); 
+		populateGrid(); 
 	}	
 
 
-	public void populateBoard() {
+	public void populateGrid() {
 		for (int i = 0; i < rows; i++){
 			for(int j = 0; j < columns; j++){
-				board[i][j] = "#";
+				grid[i][j] = "#";
 			}
 		}
 	}
 
 	
 
-	public void displayBoard() {
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				boardDisplay += board[i][j];
+	public void displayGrid() {
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[i].length; j++) {
+				gridDisplay += grid[i][j];
 			}
-			boardDisplay += "\n";
+			gridDisplay += "\n";
 		}
-		screen.displayMessageLine(boardDisplay);
+		screen.displayMessageLine(gridDisplay);
 
 	}
 	
