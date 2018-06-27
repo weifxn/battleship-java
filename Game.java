@@ -33,7 +33,7 @@ public class Game {
 		screen = new Screen();
 		input = new Input();
 		grid = new Grid();
-		player = new Player();
+		// player = new Player();
 
 	}
 
