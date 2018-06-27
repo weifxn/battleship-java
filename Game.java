@@ -14,12 +14,11 @@ Fix:
 
 */
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 
 public class Game {
 	// variables
-
+	private String[] rowCol = { "row", "column" };
 	// classes
 	private Screen screen; 
 	private Input input;
@@ -72,32 +71,24 @@ public class Game {
 			Grid grid = new Grid();
 			screen.displayMessage(grid.displayBoard());
 			int[] choice = getUserChoice();
-			exit = checkExit(choice);
+			exit = checkExit(choice); // if return 2 will exit loop
 			// clearScreen();
 		}
 	}
 	// get user choice
     private int[] getUserChoice() {
-		String[] rowCol = { "row", "column" };
 		int[] choice = {-1,-1};
 		for (int i = 0; i < 2; i++) {
-			try {
-				System.out.printf( "Enter %s: ", rowCol[i] );
-				choice[i] = input.getInput();
-				if (choice[i] == 0) {
-					i = 2; // 0 to exit
-				}
-			}
-			catch (InputMismatchException e) {
-				i = 2;
-				// System.out.println("Please enter integer");
-				
+			System.out.printf( "Enter %s: ", rowCol[i] );
+			choice[i] = input.getInput();
+			if (choice[i] == 0) { // 0 to exit
+				i = 2; // 2 will exit loop
 			}
 		}	
 		return choice;
 	} 
 
-	private static int checkExit(int[] choice) {
+	private int checkExit(int[] choice) {
 		for (int i = 0; i < 2; i++) {
 			if (choice[i] == 0) {
 				return 2;
