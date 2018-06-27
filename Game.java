@@ -23,6 +23,7 @@ public class Game {
 	private Screen screen; 
 	private Input input;
 	private Grid grid;
+	private Player player;
 
 	// constants or menu options
 	private static final int START = 1;
@@ -32,6 +33,7 @@ public class Game {
 		screen = new Screen();
 		input = new Input();
 		grid = new Grid();
+		player = new Player();
 
 	}
 
@@ -40,8 +42,6 @@ public class Game {
 		for (int quit = 0; quit < 1; quit--) {
 			quit = gameMenu();
 		}
-		
-
 	}
 	private int gameMenu() {	
 		while (true) {
@@ -49,6 +49,7 @@ public class Game {
 			switch ( choice )
 			{
 				case START:
+					
 					startGame();
 					return 0;
 				case QUIT:
@@ -58,14 +59,20 @@ public class Game {
 		}
 	}
 
+	private int setDifficulty() {
+		screen.displayMessageLine( "\nDifficulty" );
+		screen.displayMessageLine( "1. Start" );
+		screen.displayMessageLine( "2. Quit" );
+		screen.displayMessageLine( "\nEnter a choice: " );
+		return input.getInput();
+	}
+
 	private int displayMenu() {
 		screen.displayMessageLine( "\nBattleship" );
 		screen.displayMessageLine( "1. Start" );
 		screen.displayMessageLine( "2. Quit" );
 		screen.displayMessageLine( "\nEnter a choice: " );
 		return input.getInput();
-
-
 	}
 
 	private void startGame() {
