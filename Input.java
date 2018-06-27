@@ -25,4 +25,17 @@ public class Input {
         retry = false;
         return checkInput;
     }
+
+    public int[] getGameInput() {
+        String[] rowCol = { "row", "column" };
+        int[] choice = {-1,-1};
+		for (int i = 0; i < 2; i++) {
+			System.out.printf( "Enter %s: ", rowCol[i] );
+			choice[i] = getInput();
+			if (choice[i] == 0) { // 0 to exit
+				i = 2; // 2 will exit loop
+			}
+		}	
+		return choice;
+    }
 }

@@ -9,7 +9,7 @@ You’re required to build a game ‘Find-The-Battleship’ in Java program that
 - The game should allow player to choose among 3 stages of difficulties which contain different number of ships, traps and potions. For example:
     - Beginner: 80 ships, 10 traps, 18 potions
     - Intermediate: 50 ships, 20 traps, 18 potions
-    - Advance: 20 ships, 30 traps, 18 potions
+    - Advanced: 20 ships, 30 traps, 18 potions
 
 - There are two types of trap: 
     - Low danger trap: which will reduce life by 1
