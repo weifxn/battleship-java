@@ -14,12 +14,14 @@ You’re required to build a game ‘Find-The-Battleship’ in Java program that
 - There are two types of trap: 
     - Low danger trap: which will reduce life by 1
     - High danger trap: which will reduce life by 2
+    
     Your game should contain the mixture low and high danger traps.
 
 - And, there is three types of potions:
     - Life saver potion: which can increase the life by 1
     - Trap reveal potion: which will reveal a trap
     - Ship reveal potion: which will reveal a ship
+    
     For each game, you should have a mixture of each type of potions
 
 - Once the game started, all the ships, traps and potions will be scattered randomly in the map and should not be visible to the player.
