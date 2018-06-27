@@ -65,7 +65,7 @@ public class Game {
 		screen.displayMessageLine( "1. Beginner" );
 		screen.displayMessageLine( "2. Intermediate" );
 		screen.displayMessageLine( "3. Advanced" );
-		screen.displayMessageLine( "\nEnter a choice: " );
+		screen.displayMessageLine( "\nChoose a difficulty: " );
 		return input.getInput();
 	}
 
