@@ -20,7 +20,6 @@ import java.util.InputMismatchException;
 public class Game {
 	private Screen screen; 
 	private Input input;
-	private Grid grid;
 
 	// constants or menu options
 	private static final int START = 1;
@@ -29,7 +28,6 @@ public class Game {
 	public Game() {
 		screen = new Screen();
 		input = new Input();
-		grid = new Grid();
 
 	}
 
@@ -44,14 +42,10 @@ public class Game {
 	private void gameMenu() {
 		Scanner input = new Scanner( System.in );
 		for (int quit = 0; quit < 1; quit--) {
-			try {
 				
-				int choice = displayMenu();
-				if (choice == 1) {
-					startGame();
-				}
-			}
-			catch (InputMismatchException e) {
+			int choice = displayMenu();
+			if (choice == 1) {
+				startGame();
 			}
 		}
 	}
@@ -66,9 +60,10 @@ public class Game {
 
 	}
 
-	private static void startGame() {
+	private void startGame() {
 		for (int exit = 0; exit < 1; exit--) {
-			screen.displayMessageLine(grid.displayBoard());
+			Grid b1 = new Grid();
+			screen.displayMessage(b1.displayBoard());
 			int[] choice = getUserChoice();
 			exit = checkExit(choice);
 			// clearScreen();
