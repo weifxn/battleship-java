@@ -29,7 +29,51 @@ public class Grid {
 
 	public void populateEntity() { // random {19,59}
 		show = grid;
+		populateShip();
+		populatePotion();
+		populateTrap();	
+	}
+	
+	public void populateTrap() { 
+		int trapno = 10;
+		int count = 0;
+		while (count < trapno) {
+			int row = rand.nextInt(19);
+			int col = rand.nextInt(59);
 			
+			if (show[row][col] == "#") {
+				show[row][col] = "%";
+				
+			}
+			else {
+				count-=1;
+			}
+			count++;
+		}
+
+	}
+	
+	public void populatePotion() {
+		int potionno = 18;
+		int count = 0;
+		while (count<potionno) {
+			int row = rand.nextInt(19);
+			int col = rand.nextInt(59);
+			
+			if(show[row][col] == "#") {
+				show[row][col] = "$";
+				
+			}
+			else {
+				count-=1;
+			}
+			count++;
+		}
+	}
+	
+	public void populateShip() {
+		
+		
 		int shipno = 80;
 		int count = 0;
 		while (count < shipno) {
