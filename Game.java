@@ -1,39 +1,44 @@
 /*
 Todo: 
 - Add ships 
-- Fix error handling for input other than int
+- Add inheritance for trap, potion and ship (@override execute)
+- Add methods for row column (choice[] in startgame)
 
 Changelog:
 
-26/6 14:38 wf
+26/6 wf
 - Added '0' to exit/go menu
 - changed choice to array
 
+27/6 wf
+- Fixed error handling for input other than int (in Input.java)
+- Done with difficulty
+
 Fix: 
-- infinite loop when string at menu
 
 */
-import java.util.Scanner;
 
 
 public class Game {
-	// variables
 	// classes
-	private Screen screen; 
 	private Input input;
 	private Grid grid;
 	private Player player;
+	private Menu menu;
 
-	// constants or menu options
+	// menu options
 	private static final int START = 1;
 	private static final int QUIT = 2;
+	private final int[][] difficulty = {{80, 10},{50, 20},{20, 30}};
+
+	// boolean
+	private boolean diff = false;
 	
 	public Game() {
-		screen = new Screen();
 		input = new Input();
 		grid = new Grid();
-		// player = new Player();
-
+		menu = new Menu();
+		player = new Player();
 	}
 
 	public void run() 
@@ -44,11 +49,17 @@ public class Game {
 	}
 	private int gameMenu() {	
 		while (true) {
-			int choice = displayMenu();
+			int choice = menu.menu();
+			while (!diff) {
+				// set difficulty to player class
+				player.setDifficulty(getDifficulty(menu.difficulty()));
+				System.out.println(player.getShips());
+				System.out.println(player.getTraps());
+				diff = true;
+			}
 			switch ( choice )
 			{
 				case START:
-					int difficulty = setDifficulty();
 					startGame();
 					return 0;
 				case QUIT:
@@ -56,25 +67,6 @@ public class Game {
 			}
 			return 0;
 		}
-	}
-
-
-
-	private int setDifficulty() {
-		screen.displayMessageLine( "\nDifficulty" );
-		screen.displayMessageLine( "1. Beginner" );
-		screen.displayMessageLine( "2. Intermediate" );
-		screen.displayMessageLine( "3. Advanced" );
-		screen.displayMessageLine( "\nChoose a difficulty: " );
-		return input.getInput();
-	}
-
-	private int displayMenu() {
-		screen.displayMessageLine( "\nBattleship" );
-		screen.displayMessageLine( "1. Start" );
-		screen.displayMessageLine( "2. Quit" );
-		screen.displayMessageLine( "\nEnter a choice: " );
-		return input.getInput();
 	}
 
 	private void startGame() {
@@ -93,8 +85,11 @@ public class Game {
 			}
 		}
 		return 0;
-
 	}
+
+	private int[] getDifficulty(int diff) {
+        return difficulty[diff-1];
+    }
 
 	
 	// public static void clearScreen() {  
