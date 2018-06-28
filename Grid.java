@@ -126,15 +126,22 @@ public class Grid {
 	}
 
 	public void displayGrid() {
-		gridDisplay = "";
-		gridDisplay+="     ";
-		for (int m=1;m<=6;m++) {
+		gridDisplay = ""; //reset display
+		for (int a = 1; a <= 6; a++) {
+			for (int b = 1; b <=9; b++) {
+				gridDisplay += " ";   //for space
+			}
+			gridDisplay += a;
+		}
+			gridDisplay += ("\n");
+			gridDisplay+="     ";
+			for (int a=1;a<=6;a++) {
 			
-			for (int k=1; k<=10;k++) {
-				if (k==10) {
-					gridDisplay += (k-10); 
+			for (int b=1; b<=10;b++) {
+				if (b==10) {
+					gridDisplay += (b-10); 
 				}else {
-					gridDisplay += k;
+					gridDisplay += b;
 				}
 			}
 			
