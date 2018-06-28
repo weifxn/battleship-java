@@ -5,6 +5,7 @@ public class Potion extends Entity {
 
     @Override
     public void execute() {
+    	System.out.println("You hit Potion!");
         
     }
 }

@@ -40,11 +40,11 @@ public class Player {
     public void setTraps(int traps) {
         this.traps = traps;
     }
-    public void usePotion() {
-        potions -= 1;
-    }
     public void reduceLives() {
         lives -= 1;
+    }
+    public void increaseLives() {
+        lives += 1;
     }
     public void addSteps() {
         steps += 1;

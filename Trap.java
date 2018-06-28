@@ -5,6 +5,8 @@ public class Trap extends Entity {
 
     @Override
     public void execute() {
+    	System.out.println("You hit Trap!");
+    	
         
     }
 }

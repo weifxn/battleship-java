@@ -36,10 +36,10 @@ public class Game {
 	private final int[][] difficulty = {{80, 10},{50, 20},{20, 30}};
 
 	// grid entities
-	private static final int BLANK = 0;
-	private static final int SHIP = 1;
-	private static final int TRAP = 2;
-	private static final int POTION = 3;
+	private static final String BLANK = "#";
+	private static final String SHIP = ">";
+	private static final String TRAP = "%";
+	private static final String POTION = "$";
 
 	// boolean
 	private boolean diff = false;
@@ -80,13 +80,14 @@ public class Game {
 	}
 
 	private void startGame() {
-		Entity en = null;
+		Entity currentEntity = null;
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
 			grid.displayEntity();
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
-			System.out.println(grid.checkEntity(choice));
+			currentEntity=selectedEntity(grid.checkEntity(choice));
+			currentEntity.execute();
 			
 			// en = selectedEntity(grid.checkHit(choice));
 			player.addSteps();
@@ -108,7 +109,7 @@ public class Game {
 	}
 	
 	// blank, ship, trap, potion
-	private Entity selectedEntity( int type ) {
+	private Entity selectedEntity( String type ) {
 		Entity en = null;
 
 		switch ( type ) {
@@ -122,7 +123,7 @@ public class Game {
 				en = new Potion(player);
 				break;
 			case BLANK:
-				
+				break;
 		}
 
 		return en;

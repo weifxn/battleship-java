@@ -5,6 +5,7 @@ public class Ship extends Entity {
 
     @Override
     public void execute() {
+    	System.out.println("You found the Ship!");
         
     }
 }
