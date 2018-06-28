@@ -11,10 +11,6 @@ public class Grid {
 	private Screen screen = new Screen();
 
 	// Board Constructor
-	public Grid() {
-
-		populateGrid(); 
-	}	
 
 
 	public void populateGrid() {
@@ -28,6 +24,7 @@ public class Grid {
 	
 
 	public void displayGrid() {
+		gridDisplay = "";
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[i].length; j++) {
 				gridDisplay += grid[i][j];
