@@ -127,13 +127,34 @@ public class Grid {
 
 	public void displayGrid() {
 		gridDisplay = "";
+		gridDisplay+="     ";
+		for (int m=1;m<=6;m++) {
+			
+			for (int k=1; k<=10;k++) {
+				if (k==10) {
+					gridDisplay += (k-10); 
+				}else {
+					gridDisplay += k;
+				}
+			}
+			
+		}
+		gridDisplay += ("\n");
+		
 		for (int i = 0; i < grid.length; i++) {
+			gridDisplay += (i+1) + "    ";
 			for (int j = 0; j < grid[i].length; j++) {
+				
+				
 				gridDisplay += grid[i][j];
 			}
-			gridDisplay += "\n";
+			gridDisplay += ("\n");
+		
+	
 		}
 		screen.displayMessageLine(gridDisplay);
+		
+		
 	}
 
 	public void displayEntity() {
