@@ -147,10 +147,12 @@ public class Grid {
 		screen.displayMessageLine(entityDisplay);
 	}
 
-	public int checkHit( int[] choice ) {
-		return 0;
-	}
 	
+	
+	public String checkEntity(int[] choice) {
+		String entity=show[choice[0]-1][choice[1]-1];
+		return entity;
+	}
 	
 	
 }
