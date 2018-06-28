@@ -6,7 +6,7 @@ public class Grid {
 	private static final int rows = 20;
 	private static final int columns = 60;
 
-	private String grid[][] = new String[rows][columns];
+	private String[][] grid = new String[rows][columns];
 	private String gridDisplay = "";
 
 	//Entities
