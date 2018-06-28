@@ -54,6 +54,7 @@ public class Game {
 	public void run() 
 	{
 		grid.populateGrid();
+		grid.populateEntity();
 		for (int quit = 0; quit < 1; quit--) {
 			quit = gameMenu();
 		}
@@ -82,6 +83,7 @@ public class Game {
 		Entity en = null;
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
+			grid.displayEntity();
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			// en = selectedEntity(grid.checkHit(choice));
