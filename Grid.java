@@ -5,13 +5,12 @@ public class Grid {
 	private static final int rows = 20;
 	private static final int columns = 60;
 
+	
+
 	private String grid[][] = new String[rows][columns];
 	private String gridDisplay = "";
 
 	private Screen screen = new Screen();
-
-	// Board Constructor
-
 
 	public void populateGrid() {
 		for (int i = 0; i < rows; i++){
@@ -20,8 +19,6 @@ public class Grid {
 			}
 		}
 	}
-
-	
 
 	public void displayGrid() {
 		gridDisplay = "";
@@ -32,7 +29,8 @@ public class Grid {
 			gridDisplay += "\n";
 		}
 		screen.displayMessageLine(gridDisplay);
-
 	}
+	
+	
 	
 }

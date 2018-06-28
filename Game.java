@@ -1,11 +1,11 @@
 /*
 Todo: 
 - Add ships (should be 2D int array of one row and multiple col)
-- Add traps (should be array of int)
-- Add potions (should be array of int)
+- Add traps (should be 2D array of int)
+- Add potions (should be 2D array of int)
 - these 3 should affect grid.java
 - Add inheritance for trap, potion and ship (@override execute)
-- Superclass is Entity.java? Randomize position method
+- Superclass is Grid.java? Randomize position method
 - Add methods for row column (choice[] in startgame)
 
 Changelog:
@@ -35,6 +35,12 @@ public class Game {
 	private static final int QUIT = 2;
 	private final int[][] difficulty = {{80, 10},{50, 20},{20, 30}};
 
+	// grid entities
+	private static final int BLANK = 0;
+	private static final int SHIP = 1;
+	private static final int TRAP = 2;
+	private static final int POTION = 3;
+
 	// boolean
 	private boolean diff = false;
 	
@@ -55,16 +61,16 @@ public class Game {
 	private int gameMenu() {	
 		while (true) {
 			int choice = menu.menu();
-			while (!diff) {
-				// set difficulty to player class
-				player.setDifficulty(getDifficulty(menu.difficulty()));
-				// System.out.println(player.getShips());
-				// System.out.println(player.getTraps());
-				diff = true;
-			}
 			switch ( choice )
 			{
 				case START:
+					while (!diff) {
+						// set difficulty to player class
+						player.setDifficulty(getDifficulty(menu.difficulty()));
+						// System.out.println(player.getShips());
+						// System.out.println(player.getTraps());
+						diff = true;
+					}
 					startGame();
 					return 0;
 				case QUIT:
@@ -95,7 +101,30 @@ public class Game {
 
 	private int[] getDifficulty(int diff) {
         return difficulty[diff-1];
-    }
+	}
+	
+	// blank, ship, trap, potion
+	private Entity selectedEntity( int type ) {
+		Entity en = null;
+
+		switch ( type ) {
+			case SHIP:
+				en = new Ship();
+				break;
+			case TRAP:
+				en = new Trap();
+				break;
+			case POTION:
+				en = new Potion();
+				break;
+			case BLANK:
+				
+		}
+
+		return en;
+
+
+	}
 
 	
 	// public static void clearScreen() {  
