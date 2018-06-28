@@ -67,8 +67,6 @@ public class Game {
 					while (!diff) {
 						// set difficulty to player class
 						player.setDifficulty(getDifficulty(menu.difficulty()));
-						// System.out.println(player.getShips());
-						// System.out.println(player.getTraps());
 						diff = true;
 					}
 					startGame();
@@ -81,10 +79,12 @@ public class Game {
 	}
 
 	private void startGame() {
+		Entity en = null;
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
+			// en = selectedEntity(grid.checkHit(choice));
 			player.addSteps();
 			// clearScreen();
 		}
@@ -109,13 +109,13 @@ public class Game {
 
 		switch ( type ) {
 			case SHIP:
-				en = new Ship();
+				en = new Ship(player);
 				break;
 			case TRAP:
-				en = new Trap();
+				en = new Trap(player);
 				break;
 			case POTION:
-				en = new Potion();
+				en = new Potion(player);
 				break;
 			case BLANK:
 				
