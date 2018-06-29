@@ -126,7 +126,7 @@ public class Grid {
 	}
 
 	public void displayGrid() {
-		gridDisplay = ""; //reset display
+		gridDisplay = "    "; //reset display
 		for (int a = 1; a <= 6; a++) {
 			for (int b = 1; b <=9; b++) {
 				gridDisplay += " ";   //for space
@@ -134,7 +134,7 @@ public class Grid {
 			gridDisplay += a;
 		}
 			gridDisplay += ("\n");
-			gridDisplay+="     ";
+			gridDisplay+="    ";
 			for (int a=1;a<=6;a++) {
 			
 			for (int b=1; b<=10;b++) {
@@ -149,7 +149,12 @@ public class Grid {
 		gridDisplay += ("\n");
 		
 		for (int i = 0; i < grid.length; i++) {
-			gridDisplay += (i+1) + "    ";
+			if(i < 9) {
+				gridDisplay += (i+1) + "   ";
+			} else {
+				gridDisplay += (i+1) + "  ";
+			}
+
 			for (int j = 0; j < grid[i].length; j++) {
 				
 				

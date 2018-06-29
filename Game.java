@@ -86,8 +86,10 @@ public class Game {
 			grid.displayEntity();
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
-			currentEntity=selectedEntity(grid.checkEntity(choice));
-			currentEntity.execute();
+			if (exit != 2){
+				currentEntity=selectedEntity(grid.checkEntity(choice));
+				currentEntity.execute();
+			}
 			
 			// en = selectedEntity(grid.checkHit(choice));
 			player.addSteps();
