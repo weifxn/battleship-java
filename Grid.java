@@ -87,8 +87,35 @@ public class Grid {
 	}
 
 	public void displayMap() {
-		mapDisplay = "";
+		mapDisplay = "    "; //reset display
+		// first row
+		for (int a = 1; a <= 6; a++) {
+			for (int b = 1; b <=9; b++) {
+				mapDisplay += " ";   //for space
+			}
+			mapDisplay += a;
+		}
+			mapDisplay += ("\n");
+			mapDisplay+="    ";
+		// second row
+		for (int a=1;a<=6;a++) {
+			for (int b=1; b<=10;b++) {
+				if (b==10) {
+					mapDisplay += (b-10); 
+				}else {
+					mapDisplay += b;
+				}
+			}
+			
+		}
+		
+		mapDisplay += ("\n");
 		for (int i = 0; i < map.length; i++) {
+			if(i < 9) {
+				mapDisplay += (i+1) + "   ";
+			} else {
+				mapDisplay += (i+1) + "  ";
+			}
 			for (int j = 0; j < map[i].length; j++) {
 				mapDisplay += Integer.toString(map[i][j]);
 			}

@@ -80,7 +80,6 @@ public class Game {
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
 			grid.displayMap();
-			System.out.println(player.getShips());
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){
