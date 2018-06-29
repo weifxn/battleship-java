@@ -49,7 +49,7 @@ public class Game {
 	public void run() 
 	{
 		grid.populateGrid();
-		grid.populateMap();
+		
 		for (int quit = 0; quit < 1; quit--) {
 			quit = gameMenu();
 		}
@@ -65,6 +65,7 @@ public class Game {
 						player.setDifficulty(getDifficulty(menu.difficulty()));
 						diff = true;
 					}
+					grid.populateMap(player);
 					startGame();
 					return 0;
 				case QUIT:
@@ -79,10 +80,11 @@ public class Game {
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
 			grid.displayMap();
+			System.out.println(player.getShips());
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){
-				currentEntity=grid.selectedEntity(grid.checkEntity(choice));
+				currentEntity=grid.selectedEntity(grid.checkEntity(choice), player);
 				if(currentEntity != null){ 
 					currentEntity.execute();
 				}

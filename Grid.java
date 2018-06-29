@@ -14,11 +14,7 @@ public class Grid {
 	private Screen screen = new Screen();
 	Random rand = new Random();
 
-	Player player = new Player();
 
-	Ship ship = new Ship(player);
-	Trap trap = new Trap(player);
-	Potion potion = new Potion(player);
 
 
 	// grid entities
@@ -35,7 +31,7 @@ public class Grid {
 		}
 	}
 
-	public void populateMap() { // random {19,59}
+	public void populateMap(Player player) { // random {19,59}
 		for (int i = 0; i < rows; i++){
 			for(int j = 0; j < columns; j++){
 				map[i][j] = 0;
@@ -43,7 +39,7 @@ public class Grid {
 		}
 		Entity currentEntity = null;
 		for (int i=1;i<=3;i++){
-			currentEntity=selectedEntity(i);
+			currentEntity=selectedEntity(i, player);
 			currentEntity.populate(map);
 		}
 	}
@@ -108,7 +104,7 @@ public class Grid {
 		return entity;
 	}
 
-	public Entity selectedEntity( int type ) {
+	public Entity selectedEntity( int type, Player player ) {
 		Entity en = null;
 
 		switch ( type ) {

@@ -14,8 +14,11 @@ public class Ship extends Entity {
     @Override
     public void populate( int[][] map ) {
 		Random rand = new Random();
-		
-		int shipno = 80;
+        Player player = getPlayer();
+        
+        
+        int shipno = player.getShips();
+        System.out.println("ship no: "+shipno);
 		int count = 0;
 		while (count < shipno) {
 			int  row = rand.nextInt(19);
