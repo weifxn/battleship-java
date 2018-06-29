@@ -29,7 +29,11 @@ public class Grid {
 	}
 
 	public void populateMap() { // random {19,59}
-		map = grid;
+		for(int i=0;i<20;i++){
+			System.arraycopy(grid[i],0,map[i],0,60);
+		}
+		// map = grid.clone();
+		// map = Arrays.copyOf(grid,0);
 		ship.populate(map);
 		potion.populate(map);
 		trap.populate(map);	

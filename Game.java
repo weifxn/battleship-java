@@ -81,7 +81,6 @@ public class Game {
 		Entity currentEntity = null;
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
-			grid.displayMap();
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){
