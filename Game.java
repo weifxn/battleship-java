@@ -1,8 +1,5 @@
 /*
 Todo: 
-- Add inheritance for trap, potion and ship (@override execute)
-- Superclass is Grid.java? Randomize position method
-- Add methods for row column (choice[] in startgame)
 - clean up populateShip() in grid.java
 - add parameter to populate map
 
@@ -15,6 +12,11 @@ Changelog:
 27/6 wf
 - Fixed error handling for input other than int (in Input.java)
 - Done with difficulty
+
+28/7 wf
+- Added inheritance for trap, potion and ship (@override execute)
+- Superclass is Grid.java? Randomize position method
+- Added methods for row column (choice[] in startgame)
 
 Fix: 
 
