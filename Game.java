@@ -1,12 +1,10 @@
 /*
 Todo: 
-- Add ships (should be 2D int array of one row and multiple col)
-- Add traps (should be 2D array of int)
-- Add potions (should be 2D array of int)
-- these 3 should affect grid.java
 - Add inheritance for trap, potion and ship (@override execute)
 - Superclass is Grid.java? Randomize position method
 - Add methods for row column (choice[] in startgame)
+- clean up populateShip() in grid.java
+- add parameter to populate map
 
 Changelog:
 
@@ -54,7 +52,7 @@ public class Game {
 	public void run() 
 	{
 		grid.populateGrid();
-		grid.populateEntity();
+		grid.populateMap();
 		for (int quit = 0; quit < 1; quit--) {
 			quit = gameMenu();
 		}
@@ -83,15 +81,16 @@ public class Game {
 		Entity currentEntity = null;
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
-			grid.displayEntity();
+			grid.displayMap();
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){
 				currentEntity=selectedEntity(grid.checkEntity(choice));
-				currentEntity.execute();
+				if(currentEntity != null){ 
+					currentEntity.execute();
+				}
 			}
 			
-			// en = selectedEntity(grid.checkHit(choice));
 			player.addSteps();
 			// clearScreen();
 		}
