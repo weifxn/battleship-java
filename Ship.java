@@ -11,7 +11,8 @@ public class Ship extends Entity {
         
     }
 
-    public void populate( String[][] map ) {
+    @Override
+    public void populate( int[][] map ) {
 		Random rand = new Random();
 		
 		int shipno = 80;
@@ -24,35 +25,35 @@ public class Ship extends Entity {
 			int length =  rand.nextInt(3) + 3;
 			if (col < 54) {
 				for (int i = col; i < col + (length + 1); i++){
-					if (map[row][i] == ">") {
+					if (map[row][i] == 1) {
 						gotShip = true;
 					}
 				}// after length + 1
 				if (col > 0 ){
-					if (map[row][col-1] == ">") {
+					if (map[row][col-1] == 1) {
 						gotShip = true;
 					}
 				}
 				if(!gotShip) {
 					for (int i = col; i < col + length; i++){
-						map[row][i] = ">";
+						map[row][i] = 1;
 					}
 				}
 			}
 			else {
 				for (int i = col; i > col - (length + 1) ; i--){
-					if (map[row][i] == ">") {
+					if (map[row][i] == 1) {
 						gotShip = true;
 					}
 				}// before length + 1
 				if (col < 59){
-					if (map[row][col+1] == ">") {
+					if (map[row][col+1] == 1) {
 						gotShip = true;
 					}
 				}
 				if (!gotShip){
 					for (int i = col; i > col - length ; i--){
-						map[row][i] = ">";
+						map[row][i] = 1;
 					}
 				}
 				

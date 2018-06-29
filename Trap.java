@@ -28,7 +28,8 @@ public class Trap extends Entity {
 		System.out.println("You have "+ player.getLives()+" lives left.");
 	}
 	
-	public void populate( String[][] map ) { 
+	@Override
+	public void populate( int[][] map ) { 
 		Random rand = new Random();
 		int trapno = 10;
 		int count = 0;
@@ -36,8 +37,8 @@ public class Trap extends Entity {
 			int row = rand.nextInt(19);
 			int col = rand.nextInt(59);
 			
-			if (map[row][col] == "#") {
-				map[row][col] = "%";
+			if (map[row][col] == 0) {
+				map[row][col] = 2;
 				
 			}
 			else {

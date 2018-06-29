@@ -10,16 +10,18 @@ public class Potion extends Entity {
         
     }
 
-    public void populate( String[][] map ) {
+    @Override
+    public void populate( int[][] map ) {
         Random rand = new Random();
-		int potionno = 18;
+        Player player = getPlayer();
+		int potionno = player.getPotions();
 		int count = 0;
 		while (count<potionno) {
 			int row = rand.nextInt(19);
 			int col = rand.nextInt(59);
 			
-			if(map[row][col] == "#") {
-				map[row][col] = "$";
+			if(map[row][col] == 0) {
+				map[row][col] = 3;
 				
 			}
 			else {

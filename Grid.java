@@ -7,7 +7,7 @@ public class Grid {
 	private final int columns = 60;
 
 	private String[][] grid = new String[rows][columns];
-	private String[][] map = new String[rows][columns];
+	private int[][] map = new int[rows][columns];
 	private String gridDisplay = "";
 	private String mapDisplay = "";
 
@@ -20,6 +20,13 @@ public class Grid {
 	Trap trap = new Trap(player);
 	Potion potion = new Potion(player);
 
+
+	// grid entities
+	private static final int BLANK = 0;
+	private static final int SHIP = 1;
+	private static final int TRAP = 2;
+	private static final int POTION = 3;
+
 	public void populateGrid() {
 		for (int i = 0; i < rows; i++){
 			for(int j = 0; j < columns; j++){
@@ -29,14 +36,16 @@ public class Grid {
 	}
 
 	public void populateMap() { // random {19,59}
-		for(int i=0;i<20;i++){
-			System.arraycopy(grid[i],0,map[i],0,60);
+		for (int i = 0; i < rows; i++){
+			for(int j = 0; j < columns; j++){
+				map[i][j] = 0;
+			}
 		}
-		// map = grid.clone();
-		// map = Arrays.copyOf(grid,0);
-		ship.populate(map);
-		potion.populate(map);
-		trap.populate(map);	
+		Entity currentEntity = null;
+		for (int i=1;i<=3;i++){
+			currentEntity=selectedEntity(i);
+			currentEntity.populate(map);
+		}
 	}
 	
 
@@ -85,7 +94,7 @@ public class Grid {
 		mapDisplay = "";
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {
-				mapDisplay += map[i][j];
+				mapDisplay += Integer.toString(map[i][j]);
 			}
 			mapDisplay += "\n";
 		}
@@ -94,9 +103,31 @@ public class Grid {
 
 	
 	
-	public String checkEntity(int[] choice) {
-		String entity=map[choice[0]-1][choice[1]-1];
+	public int checkEntity(int[] choice) {
+		int entity=map[choice[0]-1][choice[1]-1];
 		return entity;
+	}
+
+	public Entity selectedEntity( int type ) {
+		Entity en = null;
+
+		switch ( type ) {
+			case SHIP:
+				en = new Ship(player);
+				break;
+			case TRAP:
+				en = new Trap(player);
+				break;
+			case POTION:
+				en = new Potion(player);
+				break;
+			case BLANK:
+				break;
+		}
+
+		return en;
+
+
 	}
 	
 	

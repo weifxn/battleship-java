@@ -12,4 +12,5 @@ public abstract class Entity {
     }
 
     abstract public void execute();
+    abstract public void populate( int[][] map );
 } 
