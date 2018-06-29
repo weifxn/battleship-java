@@ -12,7 +12,7 @@ public class Ship extends Entity {
     }
 
     @Override
-    public void populate( int[][] map ) {
+    public int[][] populate( int[][] map ) {
 		Random rand = new Random();
         Player player = getPlayer();
         
@@ -66,6 +66,7 @@ public class Ship extends Entity {
 				gotShip = false;
 				count -=1;
 			}
-		}
+        }
+        return map;
 	}
 }

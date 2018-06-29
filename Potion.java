@@ -11,7 +11,7 @@ public class Potion extends Entity {
     }
 
     @Override
-    public void populate( int[][] map ) {
+    public int[][] populate( int[][] map ) {
         Random rand = new Random();
         Player player = getPlayer();
 		int potionno = player.getPotions();
@@ -28,6 +28,7 @@ public class Potion extends Entity {
 				count-=1;
 			}
 			count++;
-		}
+        }
+        return map;
 	}
 }

@@ -29,7 +29,7 @@ public class Trap extends Entity {
 	}
 	
 	@Override
-	public void populate( int[][] map ) { 
+	public int[][] populate( int[][] map ) { 
 		Random rand = new Random();
 		int trapno = 10;
 		int count = 0;
@@ -46,6 +46,7 @@ public class Trap extends Entity {
 			}
 			count++;
 		}
+		return map;
 
 	}
     

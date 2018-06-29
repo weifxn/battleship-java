@@ -40,7 +40,7 @@ public class Grid {
 		Entity currentEntity = null;
 		for (int i=1;i<=3;i++){
 			currentEntity=selectedEntity(i, player);
-			currentEntity.populate(map);
+			map = currentEntity.populate(map);
 		}
 	}
 	
