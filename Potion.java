@@ -6,8 +6,29 @@ public class Potion extends Entity {
 
     @Override
     public int[][] execute( int[][] map ) {
-    	System.out.println("You hit Potion!");
-		
+    	Player player = getPlayer();
+    	String potiontype = "";
+    	Random rand = new Random();
+    	int potionlvl = rand.nextInt(3);
+    	if (potiontype == "lifesaver") {
+    		potionlvl = 1;
+    		player.increaseLives();
+    		System.out.println(player.getLives());
+    	}
+    	else if (potiontype == "revealship") {
+    		potionlvl = 2;
+    		player.getShips();
+    		System.out.println(player.getShips());
+    	}
+    	else if (potiontype == "revealtrap") {
+    		potionlvl = 3;
+    		player.getTraps();
+    		System.out.println(player.getTraps());
+    	}
+    
+    	System.out.println("You hit " + potionlvl + " Potion!");
+		System.out.println("You have "+ player.getLives()+" lives left.");
+
 		return map;
     }
 
