@@ -88,7 +88,7 @@ public class Game {
 					currentEntity.execute(grid.getMap());
 				}
 			}
-			
+			grid.updateGrid();
 			player.addSteps();
 			// clearScreen();
 		}

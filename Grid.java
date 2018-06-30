@@ -48,6 +48,21 @@ public class Grid {
 		return map;
 	}
 
+	//setter 
+	public void updateGrid() {
+		for (int i = 0; i < rows; i++){
+			for(int j = 0; j < columns; j++){
+				if(map[i][j] == -1) {
+					grid[i][j] = " ";
+				}
+				else if(map[i][j] == -2) {
+					grid[i][j] = "O"
+				}
+
+			}
+		}
+	}
+
 
 	// for display
 
@@ -137,7 +152,7 @@ public class Grid {
 		return entity;
 	}
 
-	public Entity selectedEntity( int type, Player player ) {
+	public Entity selectedEntity( int[] choice, int type, Player player ) {
 		Entity en = null;
 
 		switch ( type ) {
@@ -151,6 +166,7 @@ public class Grid {
 				en = new Potion(player);
 				break;
 			case BLANK:
+				map[choice[0]][choice[1]] = -1;
 				break;
 		}
 
