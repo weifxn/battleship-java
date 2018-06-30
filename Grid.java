@@ -38,7 +38,7 @@ public class Grid {
 			}
 		}
 		Entity currentEntity = null;
-		int[] temp = {0,0};
+		int[] temp = {1,1};
 		for (int i=1;i<=3;i++){
 			currentEntity=selectedEntity(temp, i, player);
 			map = currentEntity.populate(map);
@@ -53,10 +53,16 @@ public class Grid {
 	public void updateGrid() {
 		for (int i = 0; i < rows; i++){
 			for(int j = 0; j < columns; j++){
-				if(map[i][j] == -1) {
+				if(map[i][j] == BLANK-4) {
 					grid[i][j] = " ";
 				}
-				else if(map[i][j] == -2) {
+				else if(map[i][j] == SHIP-4) {
+					grid[i][j] = "O";
+				}
+				else if(map[i][j] == TRAP-4) {
+					grid[i][j] = "O";
+				}
+				else if(map[i][j] == POTION-4) {
 					grid[i][j] = "O";
 				}
 
@@ -87,7 +93,6 @@ public class Grid {
 					gridDisplay += b;
 				}
 			}
-			
 		}
 		
 		gridDisplay += ("\n");
@@ -148,40 +153,46 @@ public class Grid {
 
 	
 	
-	public int checkEntity(int[] choice) {
-		int entity=map[choice[0]-1][choice[1]-1];
-		return entity;
-	}
+	
 
 	public Entity selectedEntity( int[] choice, int type, Player player ) {
 		Entity en = null;
 
 		switch ( type ) {
-			case BLANK:
-				map[choice[0]-1][choice[1]-1] = -1;
-				break;
-			case SHIP:
-				map[choice[0]-1][choice[1]-1] = -2;
-				en = new Ship(player);
+			case POTION:
+				setEntity(choice, type-4);
+				en = new Potion(player);
 				break;
 			case TRAP:
-				map[choice[0]-1][choice[1]-1] = -3;
+				setEntity(choice, type-4);
 				en = new Trap(player);
 				break;
-			case POTION:
-				map[choice[0]-1][choice[1]-1] = -4;
-				en = new Potion(player);
+			case SHIP:
+				setEntity(choice, type-4);
+				en = new Ship(player);
+				break;
+			case BLANK:
+				setEntity(choice, type-4);
 				break;
 			
 		}
 
 		return en;
-
-
 	}
 
-	public void wholeShip(int[] choice) {
+	public void getWholeShip(int[] choice) {
+
 		
+	}
+
+
+	public int getEntity(int[] choice) {
+		int entity=map[choice[0]-1][choice[1]-1];
+		return entity;
+	}
+
+	private void setEntity(int[] choice, int entity) {
+		map[choice[0]-1][choice[1]-1] = entity;
 	}
 	
 	
