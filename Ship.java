@@ -6,21 +6,16 @@ public class Ship extends Entity {
     }
 
     @Override
-    public void execute() {
+    public int[][] execute( int[][] map ) {
     	System.out.println("You found the Ship!");
-        
+        return map;
     }
 
     @Override
     public int[][] populate( int[][] map ) {
 		Random rand = new Random();
         Player player = getPlayer();
-        
-        
-        int shipno = player.getShips();
-        System.out.println("ship no: "+shipno);
-		int count = 0;
-		while (count < shipno) {
+		for (int count = 0; count < player.getShips(); count++) {
 			int  row = rand.nextInt(20);
 			int  col = rand.nextInt(60);
 			boolean gotShip = false;
@@ -31,14 +26,13 @@ public class Ship extends Entity {
             // fix this
 			if (col < 54 && col > 0) {
                 if (map[row][col+(length+1)] == 0) {
-                    if col > 0
-                    map[row][col-1] == 0
+                 
                     for (int i = col; i < col + length; i++){
 						map[row][i] = 1;
 					}
                 }
 			}
-			else if (col > 53 && col < 60) {
+			else if (col > 53 && col < 59) {
                 if(map[row][col-(length+1)] == 0
                 && map[row][col+1] == 0){
                     for (int i = col; i > col - length ; i--){
@@ -49,7 +43,6 @@ public class Ship extends Entity {
             else {
                 count--;
             }
-			count++;
         }
         return map;
 	}

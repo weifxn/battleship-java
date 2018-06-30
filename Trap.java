@@ -7,25 +7,24 @@ public class Trap extends Entity {
 
 
     @Override
-    public void execute() {
+    public int[][] execute( int[][] map ) {
     	Player player = getPlayer();
     	String highlow = "";
     	Random rand = new Random();
     	int dangerlevel=rand.nextInt(2);
     	if (dangerlevel==0) {
     		highlow = "low";
-    		player.reduceLives();
+    		player.reduceLives(1);
     		System.out.println(player.getLives());
     	}
     	else {
     		highlow = "high";
-    		player.reduceLives();
-    		player.reduceLives();
-    		
+    		player.reduceLives(2);
     	}
-    	
 		System.out.println("You hit " + highlow + " Trap!");
 		System.out.println("You have "+ player.getLives()+" lives left.");
+
+		return map;
 	}
 	
 	@Override

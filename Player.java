@@ -40,8 +40,10 @@ public class Player {
     public void setTraps(int traps) {
         this.traps = traps;
     }
-    public void reduceLives() {
-        lives -= 1;
+    public void reduceLives( int count ) {
+        for(int i = 0; i < count; i++) {
+            lives -= 1;
+        }
     }
     public void increaseLives() {
         lives += 1;

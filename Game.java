@@ -85,7 +85,7 @@ public class Game {
 			if (exit != 2){
 				currentEntity=grid.selectedEntity(grid.checkEntity(choice), player);
 				if(currentEntity != null){ 
-					currentEntity.execute();
+					currentEntity.execute(grid.getMap());
 				}
 			}
 			

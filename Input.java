@@ -5,6 +5,7 @@ public class Input {
     private Scanner input;
     private int checkInput;
     private boolean retry;
+    Screen screen = new Screen();
 
     public Input() {
         input = new Scanner( System.in );
@@ -18,7 +19,7 @@ public class Input {
                 retry = true;
             }
             catch (InputMismatchException e){
-                System.out.print("Please insert integer: ");
+                screen.displayMessage("Please insert integer: ");
                 input.next();
             }
         }
@@ -28,14 +29,29 @@ public class Input {
 
     public int[] getGameInput() {
         String[] rowCol = { "row", "column" };
-        int[] choice = {-1,-1};
+        int[] choice={0,0};
 		for (int i = 0; i < 2; i++) {
 			System.out.printf( "Enter %s: ", rowCol[i] );
-			choice[i] = getInput();
-			if (choice[i] == 0) { // 0 to exit
-				i = 2; // 2 will exit loop
-			}
+            choice[i] = getInput();
+            i = checkExceed(choice, i);
+			
 		}	
 		return choice;
+    }
+
+    private int checkExceed(int[] choice, int i) {
+        if (choice[i] == 0) { // 0 to exit
+            i = 2; // 2 will exit loop
+        }
+        else if (choice[0] > 20 || choice[0] < 0) {
+            screen.displayMessage("Exceed grid rows. \n");
+            i--;
+        }
+        else if (choice[1] > 60 || choice[1] < 0) {
+            screen.displayMessage("Exceed grid columns. \n");
+            i--;
+        }
+        return i;
+
     }
 }

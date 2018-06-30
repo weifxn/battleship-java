@@ -11,6 +11,6 @@ public abstract class Entity {
         return player;
     }
 
-    abstract public void execute();
+    abstract public int[][] execute( int[][] map );
     abstract public int[][] populate( int[][] map );
 } 

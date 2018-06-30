@@ -43,7 +43,13 @@ public class Grid {
 			map = currentEntity.populate(map);
 		}
 	}
-	
+	// getter
+	public int[][] getMap() {
+		return map;
+	}
+
+
+	// for display
 
 	public void displayGrid() {
 		gridDisplay = "    "; //reset display

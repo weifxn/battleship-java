@@ -5,9 +5,10 @@ public class Potion extends Entity {
     }
 
     @Override
-    public void execute() {
+    public int[][] execute( int[][] map ) {
     	System.out.println("You hit Potion!");
-        
+		
+		return map;
     }
 
     @Override
