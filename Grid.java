@@ -38,8 +38,9 @@ public class Grid {
 			}
 		}
 		Entity currentEntity = null;
+		int[] temp = {0,0};
 		for (int i=1;i<=3;i++){
-			currentEntity=selectedEntity(i, player);
+			currentEntity=selectedEntity(temp, i, player);
 			map = currentEntity.populate(map);
 		}
 	}
@@ -56,7 +57,7 @@ public class Grid {
 					grid[i][j] = " ";
 				}
 				else if(map[i][j] == -2) {
-					grid[i][j] = "O"
+					grid[i][j] = "O";
 				}
 
 			}
@@ -156,23 +157,31 @@ public class Grid {
 		Entity en = null;
 
 		switch ( type ) {
+			case BLANK:
+				map[choice[0]-1][choice[1]-1] = -1;
+				break;
 			case SHIP:
+				map[choice[0]-1][choice[1]-1] = -2;
 				en = new Ship(player);
 				break;
 			case TRAP:
+				map[choice[0]-1][choice[1]-1] = -3;
 				en = new Trap(player);
 				break;
 			case POTION:
+				map[choice[0]-1][choice[1]-1] = -4;
 				en = new Potion(player);
 				break;
-			case BLANK:
-				map[choice[0]][choice[1]] = -1;
-				break;
+			
 		}
 
 		return en;
 
 
+	}
+
+	public void wholeShip(int[] choice) {
+		
 	}
 	
 	

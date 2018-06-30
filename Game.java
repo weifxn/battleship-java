@@ -83,7 +83,7 @@ public class Game {
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){
-				currentEntity=grid.selectedEntity(grid.checkEntity(choice), player);
+				currentEntity=grid.selectedEntity(choice, grid.checkEntity(choice), player);
 				if(currentEntity != null){ 
 					currentEntity.execute(grid.getMap());
 				}
