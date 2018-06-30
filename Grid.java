@@ -38,9 +38,8 @@ public class Grid {
 			}
 		}
 		Entity currentEntity = null;
-		int[] temp = {1,1};
 		for (int i=1;i<=3;i++){
-			currentEntity=selectedEntity(temp, i, player);
+			currentEntity=selectedEntity(i, player);
 			map = currentEntity.populate(map);
 		}
 	}
@@ -60,10 +59,10 @@ public class Grid {
 					grid[i][j] = "O";
 				}
 				else if(map[i][j] == TRAP-4) {
-					grid[i][j] = "O";
+					grid[i][j] = "x";
 				}
 				else if(map[i][j] == POTION-4) {
-					grid[i][j] = "O";
+					grid[i][j] = "&";
 				}
 
 			}
@@ -168,20 +167,61 @@ public class Grid {
 				en = new Trap(player);
 				break;
 			case SHIP:
-				setEntity(choice, type-4);
+				setShipEntity(getWholeShip(choice), choice, type-4);
 				en = new Ship(player);
 				break;
 			case BLANK:
 				setEntity(choice, type-4);
-				break;
-			
+				break;	
 		}
-
 		return en;
 	}
 
-	public void getWholeShip(int[] choice) {
+	public Entity selectedEntity( int type, Player player ) {
+		Entity en = null;
 
+		switch ( type ) {
+			case POTION:
+				en = new Potion(player);
+				break;
+			case TRAP:
+				en = new Trap(player);
+				break;
+			case SHIP:
+				en = new Ship(player);
+				break;
+			case BLANK:
+				break;	
+		}
+		return en;
+	}
+
+	// return array [start, end];
+	public int[] getWholeShip(int[] choice) {
+		int[] shipPos = {0,0};
+		if (choice[1] > 1) {
+			for( int i = choice[1]-1; i >= 0; i--) {
+				if (map[choice[0]-1][i] == 1) {
+					shipPos[0] = i;
+				}
+				else {
+					break;
+				}
+			}
+		} else {
+			shipPos[0] = 0;
+		}
+
+		for(int j = shipPos[0]; j < 60; j++){
+			if(map[choice[0]-1][j] == 1) {
+				shipPos[1] = j;
+			}
+			else {
+				break;
+			}
+		}
+
+		return shipPos;
 		
 	}
 
@@ -193,6 +233,12 @@ public class Grid {
 
 	private void setEntity(int[] choice, int entity) {
 		map[choice[0]-1][choice[1]-1] = entity;
+	}
+
+	private void setShipEntity(int[] shipPos, int[] choice, int entity) {
+		for(int i = shipPos[0]; i <= shipPos[1]; i++){
+			map[choice[0]-1][i] = entity;
+		}
 	}
 	
 	
