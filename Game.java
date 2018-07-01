@@ -1,10 +1,25 @@
 /*
 Todo: 
+- add win/lose mechanics:
+	- in Player class add shipCountIncrease() <- if reaches 5 then win 
+	- lives to 0 then quit game
+	- add highscore with fileIO methods 
 
+- entitiy progress:
+	[x] ship
+	[] potion
+	[x] trap
+	- add potion function. Reveal whole ship can use getWholeShip() method
+
+- error handling:
+	- add restriction to user hitting the same tile again. checkHit() method to check if tile number is < 0.
+
+
+- not that necessary: 
+	- Remove entity class? use grid as superclass to reduce redundancy (good for class diagram)
 
 
 Changelog:
-
 26/6 wf
 - Added '0' to exit/go menu
 - changed choice to array
@@ -20,6 +35,7 @@ Changelog:
 
 29/6 wf
 - add parameter to populate map
+
 
 Fix: 
 
