@@ -1,7 +1,7 @@
 /*
 Todo: 
-- clean up populateShip() in grid.java
-- add parameter to populate map
+
+
 
 Changelog:
 
@@ -13,10 +13,13 @@ Changelog:
 - Fixed error handling for input other than int (in Input.java)
 - Done with difficulty
 
-28/7 wf
+28/6 wf
 - Added inheritance for trap, potion and ship (@override execute)
 - Superclass is Grid.java? Randomize position method
 - Added methods for row column (choice[] in startgame)
+
+29/6 wf
+- add parameter to populate map
 
 Fix: 
 
@@ -62,8 +65,13 @@ public class Game {
 				case START:
 					while (!diff) {
 						// set difficulty to player class
-						player.setDifficulty(getDifficulty(menu.difficulty()));
-						diff = true;
+						int diffLevel = menu.difficulty();
+						if (diffLevel > 0 && diffLevel < 4) {
+							diff = true;
+							player.setDifficulty(getDifficulty(diffLevel));
+						} else {
+							diff = false;
+						}
 					}
 					grid.populateMap(player);
 					startGame();
