@@ -16,7 +16,6 @@ public class Grid {
 
 
 
-
 	// grid entities
 	private static final int BLANK = 0;
 	private static final int SHIP = 1;

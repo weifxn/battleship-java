@@ -10,23 +10,23 @@ public class Potion extends Entity {
     	String potiontype = "";
     	Random rand = new Random();
     	int potionlvl = rand.nextInt(3);
-    	if (potiontype == "lifesaver") {
-    		potionlvl = 1;
+    	if (potionlvl == 0) {
+			potiontype = "lifesaver";
     		player.increaseLives();
     		System.out.println(player.getLives());
     	}
-    	else if (potiontype == "revealship") {
-    		potionlvl = 2;
+    	else if (potionlvl == 1) {
+			potiontype = "reveal ship";
     		player.getShips();
     		System.out.println(player.getShips());
     	}
-    	else if (potiontype == "revealtrap") {
-    		potionlvl = 3;
+    	else if (potionlvl == 2) {
+    		potiontype = "reveal trap";
     		player.getTraps();
     		System.out.println(player.getTraps());
     	}
     
-    	System.out.println("You hit " + potionlvl + " Potion!");
+    	System.out.println("You hit " + potiontype + " Potion!");
 		System.out.println("You have "+ player.getLives()+" lives left.");
 
 		return map;
@@ -39,8 +39,8 @@ public class Potion extends Entity {
 		int potionno = player.getPotions();
 		int count = 0;
 		while (count<potionno) {
-			int row = rand.nextInt(19);
-			int col = rand.nextInt(59);
+			int row = rand.nextInt(20);
+			int col = rand.nextInt(60);
 			
 			if(map[row][col] == 0) {
 				map[row][col] = 3;

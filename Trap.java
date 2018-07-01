@@ -33,8 +33,8 @@ public class Trap extends Entity {
 		int trapno = 10;
 		int count = 0;
 		while (count < trapno) {
-			int row = rand.nextInt(19);
-			int col = rand.nextInt(59);
+			int row = rand.nextInt(20);
+			int col = rand.nextInt(60);
 			
 			if (map[row][col] == 0) {
 				map[row][col] = 2;

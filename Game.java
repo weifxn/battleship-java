@@ -3,6 +3,7 @@ Todo:
 - add win/lose mechanics:
 	- in Player class add shipCountIncrease() <- if reaches 5 then win 
 	- lives to 0 then quit game
+	- record steps 
 	- add highscore with fileIO methods 
 
 - entitiy progress:
@@ -10,10 +11,6 @@ Todo:
 	[] potion
 	[x] trap
 	- add potion function. Reveal whole ship can use getWholeShip() method
-
-- error handling:
-	- add restriction to user hitting the same tile again. checkHit() method to check if tile number is < 0.
-
 
 - not that necessary: 
 	- Remove entity class? use grid as superclass to reduce redundancy (good for class diagram)
@@ -35,6 +32,7 @@ Changelog:
 
 29/6 wf
 - add parameter to populate map
+- add restriction to user hitting the same tile again. checkHit() method to check if tile number is < 0.
 
 
 Fix: 
@@ -104,6 +102,7 @@ public class Game {
 		for (int exit = 0; exit < 1; exit--) {
 			grid.displayGrid();
 			grid.displayMap();
+			player.displayStats();
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){

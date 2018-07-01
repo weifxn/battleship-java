@@ -7,7 +7,9 @@ public class Ship extends Entity {
 
     @Override
     public int[][] execute( int[][] map ) {
-    	System.out.println("You found the Ship!");
+        Player player = getPlayer();
+        System.out.println("You found the Ship!");
+        player.increaseShipBombed();
         return map;
     }
 

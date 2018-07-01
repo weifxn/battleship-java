@@ -2,6 +2,7 @@ public class Player {
     // same for each difficulty
     private int lives = 15;
     private int potions = 18;
+    private int shipBombed = 0;
 
     // diff for each difficulty
     private int ships;
@@ -31,6 +32,9 @@ public class Player {
     public int getSteps() {
         return steps;
     }
+    public int getShipBombed() {
+        return shipBombed;
+    }
 
     // Setter
     
@@ -50,6 +54,18 @@ public class Player {
     }
     public void addSteps() {
         steps += 1;
+    }
+    public void increaseShipBombed() {
+        shipBombed += 1;
+    }
+
+    public void displayStats() {
+        System.out.println();
+        System.out.println("Life: " + getLives());
+        System.out.println("Steps: " + getSteps());
+        System.out.println("Ships bombed: " + getShipBombed());
+        System.out.println();
+
     }
 
     
