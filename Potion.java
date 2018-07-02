@@ -27,7 +27,6 @@ public class Potion extends Entity {
     	}
     
     	System.out.println("You hit " + potiontype + " Potion!");
-		System.out.println("You have "+ player.getLives()+" lives left.");
 
 		return map;
     }
