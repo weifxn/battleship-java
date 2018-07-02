@@ -17,8 +17,11 @@ public class Potion extends Entity {
     	}
     	else if (potionlvl == 1) {
 			potiontype = "reveal ship";
-    		player.getShips();
-    		System.out.println(player.getShips());
+			
+			
+			;
+    		System.out.printf("*&*");
+    	
     	}
     	else if (potionlvl == 2) {
     		potiontype = "reveal trap";

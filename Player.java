@@ -1,8 +1,9 @@
 public class Player {
     // same for each difficulty
-    private int lives = 15;
+    private int lives = 1;
     private int potions = 18;
     private int shipBombed = 0;
+    
 
     // diff for each difficulty
     private int ships;
@@ -15,7 +16,7 @@ public class Player {
         setShips(diff[0]);
         setTraps(diff[1]);
     }
-
+    
     // Getter
     public int getLives() {
         return lives;
@@ -35,8 +36,30 @@ public class Player {
     public int getShipBombed() {
         return shipBombed;
     }
+    public int checkLose(int exit) {
+    	if (lives < 1) {
+    		System.out.printf("Your lives is now:%d",lives);
+    		System.out.printf("Today is not your day,Try Again!");
+    		return 3;
+    	}
+    	else {
+    		return exit;
+    	}
+    }
+    
+    public int checkWin(int exit) {
+    	if (shipBombed == 4) {
+    		System.out.printf("Your lives is now:%d\n",lives);
+    		System.out.printf("Today is not your day,Try Again!");
+    		return 4;
+    		
+    	}
+    	else {
+    		return exit;
+    	}
+    }
 
-    // Setter
+	// Setter
     
     public void setShips(int ships) {
         this.ships = ships;

@@ -6,7 +6,7 @@ Todo:
 	- record steps 
 	- add highscore with fileIO methods 
 
-- entitiy progress:
+- entity progress:
 	[x] ship
 	[] potion
 	[x] trap
@@ -111,6 +111,16 @@ public class Game {
 					currentEntity.execute(grid.getMap());
 				}
 			}
+			exit = player.checkWin(exit);
+			exit = player.checkLose(exit);
+			
+			if (exit == 3) {
+				grid.populateGrid();
+				diff = false;
+			}
+			else if (exit == 4) {
+				System.out.println("Congratulations!Please enter your name:");
+			}
 			grid.updateGrid();
 			player.addSteps();
 			// clearScreen();
@@ -130,6 +140,7 @@ public class Game {
         return difficulty[diff-1];
 	}
 	
+
 	// blank, ship, trap, potion
 	
 
