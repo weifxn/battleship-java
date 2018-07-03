@@ -1,6 +1,6 @@
 public class Player {
     // same for each difficulty
-    private int lives = 1;
+    private int lives = 15;
     private int potions = 18;
     private int shipBombed = 0;
     
@@ -48,9 +48,8 @@ public class Player {
     }
     
     public int checkWin(int exit) {
-    	if (shipBombed == 4) {
-    		System.out.printf("Your lives is now:%d\n",lives);
-    		System.out.printf("Today is not your day,Try Again!");
+    	if (shipBombed == 5) {
+    		System.out.printf("Congrats, You found 5 ships!");
     		return 4;
     		
     	}

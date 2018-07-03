@@ -1,9 +1,6 @@
 /*
 Todo: 
 - add win/lose mechanics:
-	- in Player class add shipCountIncrease() <- if reaches 5 then win 
-	- lives to 0 then quit game
-	- record steps 
 	- add highscore with fileIO methods 
 
 - entity progress:
@@ -111,8 +108,9 @@ public class Game {
 					currentEntity.execute(grid.getMap());
 				}
 			}
-			exit = player.checkWin(exit);
 			exit = player.checkLose(exit);
+			exit = player.checkWin(exit);
+			
 			
 			if (exit == 3) {
 				grid.populateGrid();
