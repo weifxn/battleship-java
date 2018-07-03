@@ -6,10 +6,12 @@ public class Potion extends Entity {
 
     @Override
     public void execute() {
-    	Player player = getPlayer();
+		Player player = getPlayer();
+		Grid grid = getGrid();
     	String potiontype = "";
     	Random rand = new Random();
-    	int potionlvl = rand.nextInt(3);
+		// int potionlvl = rand.nextInt(3);
+		int potionlvl = 1;
     	if (potionlvl == 0) {
 			potiontype = "lifesaver";
     		player.increaseLives();
@@ -17,11 +19,11 @@ public class Potion extends Entity {
     	}
     	else if (potionlvl == 1) {
 			potiontype = "reveal ship";
-			
-    	
+			grid.revealShip();
     	}
     	else if (potionlvl == 2) {
-    		potiontype = "reveal trap";
+			potiontype = "reveal trap";
+			grid.revealTrap();
     	}
     
     	System.out.println("You hit " + potiontype + " Potion!");
