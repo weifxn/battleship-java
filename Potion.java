@@ -10,8 +10,7 @@ public class Potion extends Entity {
 		Grid grid = getGrid();
     	String potiontype = "";
     	Random rand = new Random();
-		// int potionlvl = rand.nextInt(3);
-		int potionlvl = 1;
+		int potionlvl = rand.nextInt(3);
     	if (potionlvl == 0) {
 			potiontype = "lifesaver";
     		player.increaseLives();

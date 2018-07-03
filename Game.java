@@ -169,7 +169,7 @@ public class Game {
 		
 		 
 		try {
-			FileOutputStream fout = new FileOutputStream(new File("test.txt"), true);
+			FileOutputStream fout = new FileOutputStream(new File("highscore.txt"), true);
 			byte b[] = name.getBytes();
 			fout.write(b);
 			fout.close();
@@ -179,7 +179,7 @@ public class Game {
 		}
 
 		try {
-			FileInputStream fin = new FileInputStream("test.txt");
+			FileInputStream fin = new FileInputStream("highscore.txt");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
 
 			String line = " ";
