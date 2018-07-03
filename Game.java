@@ -119,6 +119,8 @@ public class Game {
 			else if (exit == 4) {
 				System.out.println("Congratulations!Please enter your name:");
 				storeName();
+				grid.populateGrid();
+				diff = false;
 			}
 			// clearScreen();
 			grid.updateGrid();
@@ -144,15 +146,27 @@ public class Game {
 		int mark = 0;
 		Scanner input = new Scanner(System.in);
 		try{
-			output = new Formatter("highestscore.txt");
+				output = new Formatter("highestscore.txt");
 					System.out.print("Enter name:");
 					name = input.next();
-					System.out.print("Enter mark:");
+					System.out.println("Enter mark:");
 					mark = input.nextInt();
-					output.format("%s %d\r\n", name, mark);
+					Map<String,Integer> hmap = new HashMap<String,Integer>(10);
+					hmap.put(name,mark);
 					
-			
-			if (output!= null){
+					Set set = hmap.entrySet();
+					Iterator iterator = set.iterator();
+					while(iterator.hasNext()) {
+						Map.Entry mentry = (Map.Entry)iterator.next();
+						System.out.println(name+mark);
+						new TreeMap<Integer,String>(Collections.reverseOrder());
+					
+					}
+					
+					
+					output.format("%s %d\r\n", name, player.getSteps());
+					
+				if (output!= null){
 				output.close();
 			}
 		} catch (SecurityException se){
@@ -160,10 +174,12 @@ public class Game {
 		} catch (FileNotFoundException fe){
 			System.out.println("Error opening/creating file.");
 		}
-	}
-
+		
 	
-}	
+	}
+		
+	
+	}	
 
 	// blank, ship, trap, potion
 	
