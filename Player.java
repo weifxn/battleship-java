@@ -2,7 +2,7 @@ public class Player {
     // same for each difficulty
     private int lives = 15;
     private int potions = 18;
-    private int shipBombed = 0;
+    private int shipBombed = 4;
     
 
     // diff for each difficulty
