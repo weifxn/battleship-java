@@ -84,7 +84,7 @@ public class Player {
 
     public void displayStats() {
         System.out.println();
-        System.out.println("Life: " + getLives());
+        System.out.println("Lives: " + getLives());
         System.out.println("Steps: " + getSteps());
         System.out.println("Ships bombed: " + getShipBombed());
         System.out.println();
