@@ -122,7 +122,12 @@ public class Game {
 			}
 			else if (exit == 4) {
 				storeName();
+<<<<<<< HEAD
 				
+=======
+				grid.populateGrid();
+				diff = false;
+>>>>>>> 12aadab47f771bf83eb243bc1b814e97b1e47014
 			}
 			// clearScreen();
 			grid.updateGrid();
@@ -145,13 +150,51 @@ public class Game {
 
 	
 	private void storeName() {
+<<<<<<< HEAD
 		
 
 		
-	}
-
+=======
+		Formatter output;
+		String name;
+		int mark = 0;
+		Scanner input = new Scanner(System.in);
+		try{
+				output = new Formatter("highestscore.txt");
+					System.out.print("Enter name:");
+					name = input.next();
+					System.out.println("Enter mark:");
+					mark = input.nextInt();
+					Map<String,Integer> hmap = new HashMap<String,Integer>(10);
+					hmap.put(name,mark);
+					
+					Set set = hmap.entrySet();
+					Iterator iterator = set.iterator();
+					while(iterator.hasNext()) {
+						Map.Entry mentry = (Map.Entry)iterator.next();
+						System.out.println(name+mark);
+						new TreeMap<Integer,String>(Collections.reverseOrder());
+					
+					}
+					
+					
+					output.format("%s %d\r\n", name, player.getSteps());
+					
+				if (output!= null){
+				output.close();
+			}
+		} catch (SecurityException se){
+			System.out.println("You do not have write access");
+		} catch (FileNotFoundException fe){
+			System.out.println("Error opening/creating file.");
+		}
+		
 	
-}	
+>>>>>>> 12aadab47f771bf83eb243bc1b814e97b1e47014
+	}
+		
+	
+	}	
 
 	// blank, ship, trap, potion
 	
