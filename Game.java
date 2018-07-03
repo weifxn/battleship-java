@@ -36,9 +36,18 @@ Changelog:
 Fix: 
 
 */
+import java.io.BufferedReader;
 import java.io.FileInputStream;  
 import java.io.FileOutputStream;  
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.*;
+
+import java.io.File;  
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.util.Map;
+import java.util.Map.Entry;
+
 
 public class Game {
 	// classes
@@ -119,15 +128,13 @@ public class Game {
 			if (exit == 3) {
 				grid.populateGrid();
 				diff = false;
+				player.playerReset();
 			}
 			else if (exit == 4) {
-				storeName();
-<<<<<<< HEAD
-				
-=======
+				scoreList();
 				grid.populateGrid();
 				diff = false;
->>>>>>> 12aadab47f771bf83eb243bc1b814e97b1e47014
+				player.playerReset();
 			}
 			// clearScreen();
 			grid.updateGrid();
@@ -147,18 +154,112 @@ public class Game {
         return difficulty[diff-1];
 	}
 
+	private void scoreList() {
+		HashMap<String, Integer> hmap = new HashMap<String, Integer>();
+		boolean nextLine = false;
+		String name = "";
+
+		Scanner input = new Scanner( System.in );
+		
+
+		System.out.println("\nPlease enter your name: ");
+		name = input.nextLine();
+		name += ("\n");
+		name += player.getSteps();
+		name += ("\n");
+		
+		 
+		try {
+			FileOutputStream fout = new FileOutputStream(new File("test.txt"), true);
+			byte b[] = name.getBytes();
+			fout.write(b);
+			fout.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		try {
+			FileInputStream fin = new FileInputStream("test.txt");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
+
+			String line = " ";
+			String value;
+			while(line != null){
+				line = reader.readLine();
+				value = reader.readLine();
+				if (line != null && value != null) {
+					hmap.put(line,Integer.parseInt(value));
+				}
+			} 
+			SortedSet set = new TreeSet(); 
+
+			System.out.println("Here are the top 10 players: ");
+		
+			
+			
+			Map<String, Integer> sortedMapDesc = sortByComparator(hmap, true);
+			printMap(sortedMapDesc);
+			
+
+			fin.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+
+	}
+	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap, final boolean order)
+    {
+
+        List<Entry<String, Integer>> list = new LinkedList<Entry<String, Integer>>(unsortMap.entrySet());
+
+        // Sorting the list based on values
+        Collections.sort(list, new Comparator<Entry<String, Integer>>()
+        {
+            public int compare(Entry<String, Integer> o1,
+                    Entry<String, Integer> o2)
+            {
+                if (order)
+                {
+                    return o1.getValue().compareTo(o2.getValue());
+                }
+                else
+                {
+                    return o2.getValue().compareTo(o1.getValue());
+
+                }
+            }
+        });
+
+        // Maintaining insertion order with the help of LinkedList
+        Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
+        for (Entry<String, Integer> entry : list)
+        {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedMap;
+    }
+	public static void printMap(Map<String, Integer> map)
+    {
+        for (Entry<String, Integer> entry : map.entrySet())
+        {
+            System.out.println("Name : " + entry.getKey() + " Steps : "+ entry.getValue());
+        }
+    }
+
 
 	
 	private void storeName() {
-<<<<<<< HEAD
-		
-
-		
-=======
 		Formatter output;
 		String name;
 		int mark = 0;
 		Scanner input = new Scanner(System.in);
+
+
 		try{
 				output = new Formatter("highestscore.txt");
 					System.out.print("Enter name:");
@@ -190,7 +291,6 @@ public class Game {
 		}
 		
 	
->>>>>>> 12aadab47f771bf83eb243bc1b814e97b1e47014
 	}
 		
 	

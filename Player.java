@@ -12,6 +12,12 @@ public class Player {
     // steps 
     private int steps = 0;
 
+    public void playerReset() {
+        shipBombed = 0;
+        lives = 15;
+        steps = -1;
+    }
+
     public void setDifficulty(int[] diff) { // [ships, traps]
         setShips(diff[0]);
         setTraps(diff[1]);
