@@ -84,7 +84,7 @@ public class Game {
 							diff = false;
 						}
 					}
-					grid.populateMap(player);
+					grid.populateMap(player,grid);
 					startGame();
 					return 0;
 				case QUIT:
@@ -103,9 +103,9 @@ public class Game {
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){
-				currentEntity=grid.selectedEntity(choice, grid.getEntity(choice), player);
+				currentEntity=grid.selectedEntity(choice, grid.getEntity(choice), player,grid);
 				if(currentEntity != null){ 
-					currentEntity.execute(grid.getMap());
+					currentEntity.execute();
 				}
 			}
 			exit = player.checkLose(exit);

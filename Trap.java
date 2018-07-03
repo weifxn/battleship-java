@@ -1,13 +1,13 @@
 import java.util.Random;
 
 public class Trap extends Entity {
-    public Trap( Player player ) {
-        super(player);
+    public Trap( Player player, Grid grid ) {
+		super(player,grid);
 	}
 
 
     @Override
-    public int[][] execute( int[][] map ) {
+    public void execute() {
     	Player player = getPlayer();
     	String highlow = "";
     	Random rand = new Random();
@@ -24,11 +24,12 @@ public class Trap extends Entity {
 		System.out.println("You hit " + highlow + " Trap!");
 		System.out.println("You have "+ player.getLives()+" lives left.");
 
-		return map;
 	}
 	
 	@Override
-	public int[][] populate( int[][] map ) { 
+	public void populate() { 
+		Grid grid = getGrid();
+		int[][] map = grid.getMap();
 		Random rand = new Random();
 		int trapno = 10;
 		int count = 0;
@@ -45,7 +46,6 @@ public class Trap extends Entity {
 			}
 			count++;
 		}
-		return map;
 
 	}
     

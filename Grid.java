@@ -30,7 +30,7 @@ public class Grid {
 		}
 	}
 
-	public void populateMap(Player player) { // random {19,59}
+	public void populateMap(Player player, Grid grid) { // random {19,59}
 		for (int i = 0; i < rows; i++){
 			for(int j = 0; j < columns; j++){
 				map[i][j] = 0;
@@ -38,8 +38,8 @@ public class Grid {
 		}
 		Entity currentEntity = null;
 		for (int i=1;i<=3;i++){
-			currentEntity=selectedEntity(i, player);
-			map = currentEntity.populate(map);
+			currentEntity=selectedEntity(i, player, grid);
+			currentEntity.populate();
 		}
 	}
 	// getter
@@ -153,21 +153,21 @@ public class Grid {
 	
 	
 
-	public Entity selectedEntity( int[] choice, int type, Player player ) {
+	public Entity selectedEntity( int[] choice, int type, Player player, Grid grid ) {
 		Entity en = null;
 
 		switch ( type ) {
 			case POTION:
 				setEntity(choice, type-4);
-				en = new Potion(player);
+				en = new Potion(player, grid);
 				break;
 			case TRAP:
 				setEntity(choice, type-4);
-				en = new Trap(player);
+				en = new Trap(player, grid);
 				break;
 			case SHIP:
 				setShipEntity(getWholeShip(choice), choice, type-4);
-				en = new Ship(player);
+				en = new Ship(player, grid);
 				break;
 			case BLANK:
 				setEntity(choice, type-4);
@@ -176,18 +176,18 @@ public class Grid {
 		return en;
 	}
 
-	public Entity selectedEntity( int type, Player player ) {
+	public Entity selectedEntity( int type, Player player, Grid grid ) {
 		Entity en = null;
 
 		switch ( type ) {
 			case POTION:
-				en = new Potion(player);
+				en = new Potion(player, grid);
 				break;
 			case TRAP:
-				en = new Trap(player);
+				en = new Trap(player, grid);
 				break;
 			case SHIP:
-				en = new Ship(player);
+				en = new Ship(player, grid);
 				break;
 			case BLANK:
 				break;	

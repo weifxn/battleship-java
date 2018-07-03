@@ -2,15 +2,21 @@
 public abstract class Entity {
  
     private Player player;
+    private Grid grid;
 
-    public Entity ( Player player) {
+    public Entity ( Player player, Grid grid ) {
         this.player = player;
+        this.grid = grid;
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    abstract public int[][] execute( int[][] map );
-    abstract public int[][] populate( int[][] map );
+    public Grid getGrid() {
+        return grid;
+    }
+
+    abstract public void execute();
+    abstract public void populate();
 } 

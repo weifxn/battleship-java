@@ -1,11 +1,11 @@
 import java.util.Random;
 public class Potion extends Entity {
-    public Potion( Player player ) {
-        super(player);
+    public Potion( Player player, Grid grid ) {
+		super(player,grid);
     }
 
     @Override
-    public int[][] execute( int[][] map ) {
+    public void execute() {
     	Player player = getPlayer();
     	String potiontype = "";
     	Random rand = new Random();
@@ -18,26 +18,22 @@ public class Potion extends Entity {
     	else if (potionlvl == 1) {
 			potiontype = "reveal ship";
 			
-			
-			;
-    		System.out.printf("*&*");
     	
     	}
     	else if (potionlvl == 2) {
     		potiontype = "reveal trap";
-    		player.getTraps();
-    		System.out.println(player.getTraps());
     	}
     
     	System.out.println("You hit " + potiontype + " Potion!");
 
-		return map;
     }
 
     @Override
-    public int[][] populate( int[][] map ) {
+    public void populate() {
         Random rand = new Random();
-        Player player = getPlayer();
+		Player player = getPlayer();
+		Grid grid = getGrid();
+		int[][] map = grid.getMap();
 		int potionno = player.getPotions();
 		int count = 0;
 		while (count<potionno) {
@@ -53,6 +49,5 @@ public class Potion extends Entity {
 			}
 			count++;
         }
-        return map;
 	}
 }
