@@ -1,22 +1,23 @@
 import java.util.Random;
 public class Ship extends Entity {
     
-    public Ship( Player player ) {
-        super(player);
+    public Ship( Player player, Grid grid ) {
+		super(player, grid);
     }
 
     @Override
-    public int[][] execute( int[][] map ) {
+    public void execute() {
         Player player = getPlayer();
         System.out.println("You found the Ship!");
         player.increaseShipBombed();
-        return map;
     }
 
     @Override
-    public int[][] populate( int[][] map ) {
+    public void populate() {
         Random rand = new Random();
-        Player player = getPlayer();
+		Player player = getPlayer();
+		Grid grid = getGrid();
+		int[][] map = grid.getMap();
         
         
         int shipno = player.getShips();
@@ -68,7 +69,6 @@ public class Ship extends Entity {
 				count -=1;
 			}
         }
-        return map;
 	
     }
     

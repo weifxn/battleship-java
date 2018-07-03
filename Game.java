@@ -3,12 +3,6 @@ Todo:
 - add win/lose mechanics:
 	- add highscore with fileIO methods 
 
-- entity progress:
-	[x] ship
-	[] potion
-	[x] trap
-	- add potion function. Reveal whole ship can use getWholeShip() method
-
 - not that necessary: 
 	- Remove entity class? use grid as superclass to reduce redundancy (good for class diagram)
 
@@ -30,6 +24,13 @@ Changelog:
 29/6 wf
 - add parameter to populate map
 - add restriction to user hitting the same tile again. checkHit() method to check if tile number is < 0.
+
+3/7 wf
+- entity progress:
+	[x] ship
+	[x] potion
+	[x] trap
+	- add potion function. Reveal whole ship can use getWholeShip() method
 
 
 Fix: 
@@ -84,7 +85,7 @@ public class Game {
 							diff = false;
 						}
 					}
-					grid.populateMap(player);
+					grid.populateMap(player,grid);
 					startGame();
 					return 0;
 				case QUIT:
@@ -103,9 +104,9 @@ public class Game {
 			int[] choice = input.getGameInput();
 			exit = checkExit(choice); // if return 2 will exit loop
 			if (exit != 2){
-				currentEntity=grid.selectedEntity(choice, grid.getEntity(choice), player);
+				currentEntity=grid.selectedEntity(choice, grid.getEntity(choice), player,grid);
 				if(currentEntity != null){ 
-					currentEntity.execute(grid.getMap());
+					currentEntity.execute();
 				}
 			}
 			exit = player.checkLose(exit);
@@ -139,6 +140,8 @@ public class Game {
 	private int[] getDifficulty(int diff) {
         return difficulty[diff-1];
 	}
+
+
 	
 	private void storeName() {
 		Formatter output;
