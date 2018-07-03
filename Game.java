@@ -36,7 +36,8 @@ Changelog:
 Fix: 
 
 */
-
+import java.util.*;
+import java.io.FileNotFoundException;
 public class Game {
 	// classes
 	private Input input;
@@ -118,14 +119,13 @@ public class Game {
 			}
 			else if (exit == 4) {
 				System.out.println("Congratulations!Please enter your name:");
-				
+				storeName();
 			}
-			grid.updateGrid();
-			player.addSteps();
 			// clearScreen();
-		}
+			grid.updateGrid();
+			player.addSteps(); 
+		}		
 	}
-
 	private int checkExit(int[] choice) {
 		for (int i = 0; i < 2; i++) {
 			if (choice[i] == 0) {
@@ -141,6 +141,32 @@ public class Game {
 
 
 	
+	private void storeName() {
+		Formatter output;
+		String name;
+		int mark = 0;
+		Scanner input = new Scanner(System.in);
+		try{
+			output = new Formatter("highestscore.txt");
+					System.out.print("Enter name:");
+					name = input.next();
+					System.out.print("Enter mark:");
+					mark = input.nextInt();
+					output.format("%s %d\r\n", name, mark);
+					
+			
+			if (output!= null){
+				output.close();
+			}
+		} catch (SecurityException se){
+			System.out.println("You do not have write access");
+		} catch (FileNotFoundException fe){
+			System.out.println("Error opening/creating file.");
+		}
+	}
+
+	
+}	
 
 	// blank, ship, trap, potion
 	
@@ -150,4 +176,4 @@ public class Game {
 	// 	System.out.print("\033[H\033[2J");  
 	// 	System.out.flush();  
     // }
-}
+
