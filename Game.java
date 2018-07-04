@@ -55,6 +55,7 @@ public class Game {
 	private Grid grid;
 	private Player player;
 	private Menu menu;
+	private Screen screen = new Screen();
 	
 
 	// menu options
@@ -161,7 +162,7 @@ public class Game {
 		Scanner input = new Scanner( System.in );
 		
 
-		System.out.println("\nPlease enter your name: ");
+		screen.displayMessageLine("\nPlease enter your name: ");
 		name = input.nextLine();
 		name += ("\n");
 		name += player.getSteps();
@@ -193,7 +194,7 @@ public class Game {
 			} 
 			SortedSet set = new TreeSet(); 
 
-			System.out.println("Here are the top 10 players: ");
+			screen.displayMessageLine("Here are the top 10 players: ");
 		
 			
 			
@@ -249,58 +250,9 @@ public class Game {
             System.out.println("Name : " + entry.getKey() + " Steps : "+ entry.getValue());
         }
     }
-
-
-	
-	private void storeName() {
-		Formatter output;
-		String name;
-		int mark = 0;
-		Scanner input = new Scanner(System.in);
-
-
-		try{
-				output = new Formatter("highestscore.txt");
-					System.out.print("Enter name:");
-					name = input.next();
-					System.out.println("Enter mark:");
-					mark = input.nextInt();
-					Map<String,Integer> hmap = new HashMap<String,Integer>(10);
-					hmap.put(name,mark);
-					
-					Set set = hmap.entrySet();
-					Iterator iterator = set.iterator();
-					while(iterator.hasNext()) {
-						Map.Entry mentry = (Map.Entry)iterator.next();
-						System.out.println(name+mark);
-						new TreeMap<Integer,String>(Collections.reverseOrder());
-					
-					}
-					
-					
-					output.format("%s %d\r\n", name, player.getSteps());
-					
-				if (output!= null){
-				output.close();
-			}
-		} catch (SecurityException se){
-			System.out.println("You do not have write access");
-		} catch (FileNotFoundException fe){
-			System.out.println("Error opening/creating file.");
-		}
-		
-	
-	}
-		
-	
-	}	
-
-	// blank, ship, trap, potion
+}	
 	
 
 	
-	// public static void clearScreen() {  
-	// 	System.out.print("\033[H\033[2J");  
-	// 	System.out.flush();  
-    // }
+	
 

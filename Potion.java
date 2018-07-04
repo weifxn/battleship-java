@@ -12,7 +12,7 @@ public class Potion extends Entity {
     	Random rand = new Random();
 		int potionlvl = rand.nextInt(3);
     	if (potionlvl == 0) {
-			potiontype = "lifesaver";
+			potiontype = "life";
     		player.increaseLives();
     		System.out.println(player.getLives());
     	}
