@@ -27,10 +27,10 @@ public class Menu {
 		screen.displayMessageLine( "O - Bombed ship\n" );
 		screen.displayMessageLine( "> - Revealed ship\n" );
 
-		screen.displayMessageLine( "\nDifficulty" );
-		screen.displayMessageLine( "1. Beginner" );
-		screen.displayMessageLine( "2. Intermediate" );
-		screen.displayMessageLine( "3. Advanced" );
+		screen.displayMessageLine( "\n-- Difficulty -- \n" );
+		screen.displayMessageLine( "1. Beginner - 80 ships, 10 traps, 18 potions" );
+		screen.displayMessageLine( "\n2. Intermediate - 50 ships, 20 traps, 18 potions" );
+		screen.displayMessageLine( "\n3. Advanced - 20 ships, 30 traps, 18 potions" );
 		screen.displayMessageLine( "\nChoose a difficulty: " );
 		return input.getInput();
 	}

@@ -74,7 +74,7 @@ public class Game {
 	private void startGame() {
 		Entity currentEntity = null;
 		for (int exit = 0; exit < 1; exit--) {
-			System.out.println("\n\n\n\n\n\n");
+			System.out.println("\n\n\n\n\n\n Battleship\n\n");
 			grid.displayGrid();
 			player.displayStats();
 			int[] choice = input.getGameInput();
