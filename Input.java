@@ -5,7 +5,7 @@ public class Input {
     private Scanner input;
     private int checkInput;
     private boolean retry;
-    Screen screen = new Screen();
+    private Screen screen = new Screen();
 
     public Input() {
         input = new Scanner( System.in );

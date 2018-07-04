@@ -287,9 +287,5 @@ public class Grid {
 				break;
 			}
 		}
-
-		
 	}
-	
-	
 }

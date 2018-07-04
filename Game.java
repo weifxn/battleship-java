@@ -1,41 +1,4 @@
-/*
-Todo: 
-- add win/lose mechanics:
-	- add highscore with fileIO methods 
 
-- not that necessary: 
-	- Remove entity class? use grid as superclass to reduce redundancy (good for class diagram)
-
-
-Changelog:
-26/6 wf
-- Added '0' to exit/go menu
-- changed choice to array
-
-27/6 wf
-- Fixed error handling for input other than int (in Input.java)
-- Done with difficulty
-
-28/6 wf
-- Added inheritance for trap, potion and ship (@override execute)
-- Superclass is Grid.java? Randomize position method
-- Added methods for row column (choice[] in startgame)
-
-29/6 wf
-- add parameter to populate map
-- add restriction to user hitting the same tile again. checkHit() method to check if tile number is < 0.
-
-3/7 wf
-- entity progress:
-	[x] ship
-	[x] potion
-	[x] trap
-	- add potion function. Reveal whole ship can use getWholeShip() method
-
-
-Fix: 
-
-*/
 import java.io.BufferedReader;
 import java.io.FileInputStream;  
 import java.io.FileOutputStream;  
