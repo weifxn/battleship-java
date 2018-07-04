@@ -1,5 +1,7 @@
 # Battleship
 
+![](battleship-java/img.png?raw=true)
+
 You’re required to build a game ‘Find-The-Battleship’ in Java program that fulfil the below requirements/rules. Analyze and develop the Java program as per described using the Object Oriented design. You need to use any levels of inheritance as possible and all the object oriented techniques you’ve learnt. You also need to document your design using the UML class and class relationship diagrams.
 
 - The mission of the player that plays the game is to find the battleship of your enemy through a masked out map. Each ship is in 3-5 characters’ length.
