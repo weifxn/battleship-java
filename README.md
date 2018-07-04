@@ -1,8 +1,9 @@
 
 
-![](https://i.imgur.com/KIl3u5E.jpg)
+![](https://i.imgur.com/Yuq6nJX.jpg)
 
 ```
-javac *.java && java Battleship
+$ javac *.java
+$ java Battleship
 ```
 
